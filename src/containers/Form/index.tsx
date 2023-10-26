@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import './index.scss';
 import DateTimePicker from '../../components/DateTimePicker';
 import { Dayjs } from 'dayjs';
@@ -20,8 +20,8 @@ export default () => {
   const [endDate, setEndDate] = useState<Dayjs | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [availableFunds, setAvailableFunds] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [solution, setSolution] = useState<Solution | null | undefined>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [solution, setSolution] = useState<Solution | null | undefined>(null);
 
   const handleSubmit = async () => {
     setErrorMessage('');
@@ -107,14 +107,21 @@ export default () => {
           onClick={handleSubmit}
         />
 
-        {isLoading && <Loader />}
-        {isLoading && <Backdrop customClass='loader' />}
+        {
+          isLoading && (
+            <Fragment>
+              <Loader />
+              <Backdrop customClass='loader' />
+            </Fragment>
+          )
+        }
       </div>
 
-      {solution !== undefined && (
+      {(solution !== undefined && availableFunds > 0) && (
         <SolutionDisplay
           customClass='form-result-container'
           solution={solution}
+          availableFunds={availableFunds}
         />
       )}
     </div>
