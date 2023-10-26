@@ -1,0 +1,20 @@
+@use '../../colors';
+
+.generic-button {
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: colors.$green;
+  border-radius: 7px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-align: center;
+
+  &:hover {
+    background-color: colors.$orange;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+}

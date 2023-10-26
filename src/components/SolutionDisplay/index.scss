@@ -1,0 +1,8 @@
+@use '../../colors';
+
+.generic-solution-display {
+  padding: 20px;
+  border: 1px solid colors.$blue;
+  border-radius: 10px;
+  background-color: #fff;
+}

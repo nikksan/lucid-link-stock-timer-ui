@@ -1,0 +1,17 @@
+@use '../../colors';
+
+.generic-input {
+  height: 56px;
+  border-color: colors.$grey;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 16px;
+  outline: none;
+  padding: 10px;
+  padding-left: 15px;
+
+  &:focus {
+    border: 3px solid colors.$green;
+  }
+}
