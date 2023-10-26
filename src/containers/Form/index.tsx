@@ -21,7 +21,7 @@ export default () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [availableFunds, setAvailableFunds] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [solution, setSolution] = useState<Solution | null | undefined>(null);
+  const [solution, setSolution] = useState<Solution | null | undefined>();
 
   const handleSubmit = async () => {
     setErrorMessage('');
