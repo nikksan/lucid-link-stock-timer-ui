@@ -18,13 +18,19 @@ export default class ApiClient {
       data: null,
     }
 
-    const response = await fetch(`http://localhost:3000/calculateEntryAndExit?from=${formattedStartDate}&to=${formattedEndDate}`)
-      .then(response => response.json()) as Response;
+    try {
+      const response = await fetch(`http://localhost:3000/calculateEntryAndExit?from=${formattedStartDate}&to=${formattedEndDate}`)
+        .then(response => response.json()) as Response;
 
-    if (response.error !== null) {
-      throw new Error(response.error.message);
+      if (response.error !== null) {
+        throw new Error(response.error.message);
+      }
+
+      return response.data;
+    } catch (err) {
+      console.warn(err);
+
+      throw new Error(`General error, please try again later..`);
     }
-
-    return response.data;
   }
 }

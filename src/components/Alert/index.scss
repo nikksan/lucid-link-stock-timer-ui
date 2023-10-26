@@ -1,7 +1,7 @@
 @use '../../colors';
 
 .generic-error-message {
-  color: #fff;
+  color: colors.$white;
   background-color: colors.$red;
   text-align: center;
   padding: 10px;
