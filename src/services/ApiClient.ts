@@ -19,7 +19,7 @@ export default class ApiClient {
     }
 
     try {
-      const response = await fetch(`http://localhost:3000/calculateEntryAndExit?from=${formattedStartDate}&to=${formattedEndDate}`)
+      const response = await fetch(process.env.REACT_APP_API_URL + `/calculateEntryAndExit?from=${formattedStartDate}&to=${formattedEndDate}`)
         .then(response => response.json()) as Response;
 
       if (response.error !== null) {
