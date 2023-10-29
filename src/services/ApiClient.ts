@@ -18,19 +18,20 @@ export default class ApiClient {
       data: null,
     }
 
+    let response: Response;
     try {
-      const response = await fetch(process.env.REACT_APP_API_URL + `/calculateEntryAndExit?from=${formattedStartDate}&to=${formattedEndDate}`)
+      response = await fetch(process.env.REACT_APP_API_URL + `/calculateEntryAndExit?from=${formattedStartDate}&to=${formattedEndDate}`)
         .then(response => response.json()) as Response;
-
-      if (response.error !== null) {
-        throw new Error(response.error.message);
-      }
-
-      return response.data;
     } catch (err) {
       console.warn(err);
 
       throw new Error(`General error, please try again later..`);
     }
+
+    if (response.error !== null) {
+      throw new Error(response.error.message);
+    }
+
+    return response.data;
   }
 }
